@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 import time
 import zipfile
 import os
+import shutil
 
 # Créer une session Firefox
 driver = webdriver.Firefox()
@@ -35,7 +36,10 @@ time.sleep(5)
 zip_file_path = "C:\\Users\\GAMERWORLD\\Downloads\\ᶠᵘᶜᵏ ᵃˡˡ.zip"
 
 # Spécifier le dossier où extraire le contenu du fichier ZIP
-extracted_folder_path = "C:\\Users\\GAMERWORLD\\Downloads\\programation\\2. Logicels, Tests\\SoundyCloud\\downloaded songs"
+extracted_folder_path = "C:\\Users\\GAMERWORLD\\Downloads\\programation\\2. Logicels, Tests\\Soundly\\Soundly\\downloads"
+
+# Supprimer récursivement le contenu du dossier
+shutil.rmtree(extracted_folder_path, ignore_errors=True)
 
 # Extraire le fichier ZIP dans le dossier spécifié
 with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
