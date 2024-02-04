@@ -56,7 +56,7 @@ def run_script():
 run_script()
 
 # Planifier l'exécution toutes les 10 minutes
-schedule.every(1).minutes.do(run_script)
+schedule.every(10).minutes.do(run_script)
 
 # Exécuter le script indéfiniment
 while True:
