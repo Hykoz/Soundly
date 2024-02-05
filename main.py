@@ -5,11 +5,14 @@ import zipfile
 import os
 import shutil
 import schedule
+from tqdm import tqdm
+
 def run_script():
     # Créer une session Firefox
     driver = webdriver.Firefox()
     driver.implicitly_wait(10)  # Utiliser un délai plus court si nécessaire
     driver.maximize_window()
+    
 
     # Ouvrir la page
     url = "https://downloadsound.cloud/playlist/?url=https://soundcloud.com/bplx/sets/guts"
@@ -52,11 +55,31 @@ def run_script():
     # Fermer la fenêtre du navigateur
     driver.quit()
 
+        # Définir la durée totale en secondes
+    duree_totale = 600  # 10 minutes
+
+    # Créer une barre de progression avec tqdm
+    barre_progression = tqdm(total=duree_totale, desc="Progression")
+
+    # Boucle pour simuler une tâche prenant du temps
+    while barre_progression.n < barre_progression.total:
+        # Simuler une petite tâche
+        time.sleep(1)
+        # Mettre à jour la barre de progression
+        barre_progression.update(1)
+
+    # Fermer la barre de progression à la fin
+    barre_progression.close()
+
+    os.system("cls")
+
+
 # Exécuter le script immédiatement la première fois
 run_script()
+ 
 
 # Planifier l'exécution toutes les 10 minutes
-schedule.every(10).minutes.do(run_script)
+schedule.every(1).seconds.do(run_script)
 
 # Exécuter le script indéfiniment
 while True:
